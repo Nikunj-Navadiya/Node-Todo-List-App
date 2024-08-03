@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Record</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .word-wrap {
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        h1 {
+            font-size: 45px;
+            font-family: cursive;
+        }
+
+        label {
+            font-size: 20px;
+            font-family: cursive;
+        }
+
+        tr,
+        th {
+            font-size: 18px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .link {
+            font-size: 20px;
+            font-family: cursive;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header d-flex justify-content-between align-items-center bg-secondary text-light">
+            <div class="name m-3">
+                <h1>View Task</h1>
+            </div>
+            <div class="link m-3">
+                <a href="/add" class="btn btn-info">Add</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container col-8 mt-5">
+        <table class="table table-bordered">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th style="width: 50%;">Task</th>
+                    <th style="width: 35%;">Status</th>
+                    <th style="width: 15%;">Action</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <% record.map((val)=> { %>
+                    <tr>
+                        <td style="width: 50%;" class="word-wrap">
+                            <%= val.task %>
+                        </td>
+                        <td style="width: 35%;" class="word-wrap">
+                            <%= val.status %>
+                        </td>
+                        <td style="width: 15%;">
+                            <a href="/editrecord?id=<%= val.id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/deleterecord?id=<%= val.id %>" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
